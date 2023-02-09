@@ -27,12 +27,6 @@ app.get('/', (req, res) => {
     res.json({"hello": "world!"});
 })
 
-app.post('/post', (req, res) => {
-    console.log(req.body);
-    io.emit("control", req.body);
-    res.send({"msg": "Data sent"});
-})
-
 io.on("connection",(socket) =>{
     console.log(socket.id)
     socket.on("message", (data)=>{

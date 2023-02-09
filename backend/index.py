@@ -43,4 +43,4 @@ mydisplay = tm1637.TM1637(clk=Pin(26), dio=Pin(27))
  
 # Show a word
 mydisplay.show("Pico")
-sleep(1)
+utime.sleep(1)
