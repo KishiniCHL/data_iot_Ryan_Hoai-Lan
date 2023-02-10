@@ -4,6 +4,7 @@ import ujson
 import network
 import urequests
 import tm1637
+import socket
 
 
 wlan = network.WLAN(network.STA_IF)
@@ -42,5 +43,17 @@ except KeyboardInterrupt:
 mydisplay = tm1637.TM1637(clk=Pin(26), dio=Pin(27))
  
 # Show a word
-mydisplay.show("Pico")
+mydisplay.show("0000")
 utime.sleep(1)
+
+while(True):
+    try:
+        #print("GET")
+        r = urequests.get(url) # lance une requete sur l'url
+        val=r.json()
+        data = val["message"]
+        print(data)
+        
+    except Exception as e:
+        print(e)
+    

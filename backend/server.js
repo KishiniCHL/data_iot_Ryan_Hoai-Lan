@@ -31,11 +31,12 @@ io.on("connection",(socket) =>{
     console.log(socket.id)
     socket.on("message", (data)=>{
         console.log(data)
-        io.emit("sendFront", data)
+        // io.emit("sendFront", data)
+        app.post('/', function(req, res) {
+            res.send(data);
+        });
     })
 })
-
-
 
 server.listen(port, () => {
     console.log(`Server listening on port ${port}`);
